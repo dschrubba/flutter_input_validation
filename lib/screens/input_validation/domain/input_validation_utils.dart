@@ -27,8 +27,16 @@ class InputValidationUtils {
 
   static bool validateMail(String? value) {
     // Generic eMail validation
+    // print(exp.hasMatch("alex@example.com"));     // true
+    // print(exp.hasMatch("alex@sub.domain.com"));  // true
+    // print(exp.hasMatch("alex@my-domain.co.uk")); // true
+    // print(exp.hasMatch("alex@domain-.com"));     // false
+    // print(exp.hasMatch("alex@-domain.com"));     // false
+    // print(exp.hasMatch("alex@domain..com"));     // false
     final exp = RegExp(
-      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+",
+      r"^[a-zA-Z0-9.!#$%&'*+\-/=?^_{|}~`]+@"        // local part
+      r"(?:[a-zA-Z0-9]+(?:-[a-zA-Z0-9]+)*\.)+"      // domain + subdomains
+      r"[a-zA-Z]{2,}$"                              // TLD (min 2 chars)
     );
     return (value != null && value.isNotEmpty) ? exp.hasMatch(value) : false;
   }
