@@ -10,6 +10,7 @@ dependencies:
   flutter:
     sdk: flutter
   catppuccin_flutter: ^1.0.0
+  flutter_pw_validator: ^1.6.0
 
 dev_dependencies:
   flutter_test:

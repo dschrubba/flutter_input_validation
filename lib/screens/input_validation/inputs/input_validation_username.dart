@@ -23,8 +23,9 @@ class _InputValidationUsernameState extends State<InputValidationUsername> {
         InputValidationUtils.validateForm(context, widget.formKey);
       },
       validator: fieldValidator,
-      keyboardType: TextInputType.emailAddress,
+      keyboardType: TextInputType.text,
       decoration: InputDecoration(
+        filled: true,
         label: Text(InputValidationUsername.label),
         hintText: InputValidationUsername.hint,
         maintainHintSize: true,
@@ -37,7 +38,7 @@ class _InputValidationUsernameState extends State<InputValidationUsername> {
   }
 
   String? fieldValidator(String? input) {
-    bool isValid = (input != null && input.isNotEmpty);
+    bool isValid = InputValidationUtils.validateUsername(input);
     return !isValid ? InputValidationUsername.error : null;
   }
 

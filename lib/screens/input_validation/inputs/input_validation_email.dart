@@ -25,6 +25,7 @@ class _InputValidationEmailState extends State<InputValidationEmail> {
       validator: fieldValidator,
       keyboardType: TextInputType.emailAddress,
       decoration: InputDecoration(
+        filled: true,
         label: Text(InputValidationEmail.label),
         hintText: InputValidationEmail.hint,
         maintainHintSize: true,
@@ -37,7 +38,7 @@ class _InputValidationEmailState extends State<InputValidationEmail> {
   }
 
   String? fieldValidator(String? input) {
-    bool isValid = (input != null && input.isNotEmpty);
+    bool isValid = InputValidationUtils.validateMail(input);
     return !isValid ? InputValidationEmail.error : null;
   }
 
